@@ -95,20 +95,21 @@ body {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding-top: 110px;
+  padding-top: 95px;
   padding-bottom: 130px;
 }
 
 .envelope-wrap {
   position: relative;
   width: min(92vw, 760px);
-  height: 540px;
+  height: 560px;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .love-note {
   position: absolute;
-  top: 26px;
+  top: 12px;
   right: 0;
   padding: 12px 16px;
   border-radius: 16px;
@@ -120,21 +121,26 @@ body {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.45s ease, transform 0.45s ease;
-  z-index: 10;
+  z-index: 20;
 }
 
+/* CARTA */
 .letter {
   position: absolute;
   left: 50%;
-  bottom: 40px;
-  transform: translateX(-50%);
   width: min(82vw, 560px);
   height: 380px;
+
+  /* fechada: fica "dentro" do envelope */
+  bottom: 78px;
+  transform: translateX(-50%);
   z-index: 2;
+
   transition:
     bottom 0.95s cubic-bezier(.22, .8, .24, 1),
     transform 0.95s cubic-bezier(.22, .8, .24, 1),
-    box-shadow 0.95s ease;
+    box-shadow 0.95s ease,
+    z-index 0s linear 0.2s;
 }
 
 .letter-paper {
@@ -208,13 +214,15 @@ body {
   padding-right: 6px;
 }
 
+/* ENVELOPE */
 .envelope {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   height: 360px;
-  z-index: 4;
+  z-index: 6;
+  transition: z-index 0s linear 0.2s;
 }
 
 .env-back {
@@ -240,7 +248,7 @@ body {
   bottom: 0;
   width: 50%;
   height: 80%;
-  z-index: 3;
+  z-index: 4;
 }
 
 .env-left {
@@ -267,7 +275,7 @@ body {
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top center;
   transition: transform 1s cubic-bezier(.22, .8, .24, 1);
-  z-index: 4;
+  z-index: 5;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
 }
 
@@ -287,7 +295,7 @@ body {
   place-items: center;
   cursor: pointer;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
-  z-index: 5;
+  z-index: 7;
   transition: transform 0.25s ease, opacity 0.35s ease, box-shadow 0.25s ease;
 }
 
@@ -331,6 +339,7 @@ body {
   box-shadow: 0 20px 36px rgba(255, 93, 147, 0.34);
 }
 
+/* ABERTO */
 .scene.open .love-note {
   opacity: 1;
   transform: translateY(0);
@@ -346,10 +355,16 @@ body {
   transform: translate(-50%, -50%) scale(0.72);
 }
 
+/* a carta sobe e vai pra frente */
 .scene.open .letter {
-  bottom: 240px;
-  transform: translateX(-50%);
+  bottom: 205px;
+  z-index: 12;
   box-shadow: 0 28px 56px rgba(0, 0, 0, 0.24);
+}
+
+/* o envelope fica abaixo da carta quando aberto */
+.scene.open .envelope {
+  z-index: 3;
 }
 
 .scene.open .open-btn {
@@ -357,6 +372,7 @@ body {
   pointer-events: none;
 }
 
+/* CORAÇÕES */
 .hearts {
   position: fixed;
   inset: 0;
@@ -390,7 +406,7 @@ body {
 .sparkle {
   position: absolute;
   pointer-events: none;
-  z-index: 12;
+  z-index: 30;
   opacity: 0;
   animation: sparkle 1.2s ease-out forwards;
 }
@@ -440,7 +456,7 @@ body {
   .letter {
     width: 84vw;
     height: 340px;
-    bottom: 38px;
+    bottom: 54px;
   }
 
   .letter-paper {
@@ -458,7 +474,7 @@ body {
   }
 
   .scene.open .letter {
-    bottom: 200px;
+    bottom: 185px;
   }
 }
 
@@ -484,7 +500,7 @@ body {
   .letter {
     width: 84vw;
     height: 300px;
-    bottom: 30px;
+    bottom: 38px;
   }
 
   .letter-paper {
@@ -524,7 +540,7 @@ body {
   }
 
   .scene.open .letter {
-    bottom: 150px;
+    bottom: 138px;
   }
 
   .hint {
@@ -538,15 +554,4 @@ body {
     width: min(80vw, 320px);
     padding: 15px 20px;
   }
-}
-
-
-/* Carta vai pra frente quando abre */
-.scene.open .letter {
-  z-index: 10;
-}
-
-/* Envelope vai pra trás quando abre */
-.scene.open .envelope {
-  z-index: 1;
 }
