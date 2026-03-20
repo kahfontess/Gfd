@@ -1,182 +1,157 @@
+:root {
+  --bg1: #140810;
+  --bg2: #2a0d1b;
+  --bg3: #3c1024;
+  --pink: #ff4f87;
+  --pink-dark: #d93a6d;
+  --pink-soft: #ffd7e3;
+  --paper: #fff8f3;
+  --paper-line: rgba(214, 140, 166, 0.14);
+  --paper-text: #6f4654;
+  --envelope: #d65480;
+  --envelope-dark: #b63d68;
+  --envelope-light: #ea7aa0;
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.26);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
 body {
   min-height: 100vh;
-  margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #140b10, #24101a, #351424);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--white);
+  background:
+    radial-gradient(circle at top left, rgba(255, 79, 135, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(255, 120, 170, 0.12), transparent 24%),
+    linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Container geral */
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: rgba(255, 120, 170, 0.22);
+  animation: floatUp linear forwards;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-115vh) scale(1.35) rotate(16deg);
+    opacity: 0;
+  }
+}
+
+.glow {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(70vw, 600px);
+  height: min(70vw, 600px);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 79, 135, 0.18), transparent 65%);
+  filter: blur(28px);
+  z-index: 0;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+}
+
 .container {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  max-width: 900px;
-  padding: 20px;
-  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 18px 90px;
 }
 
-/* Título */
+.title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
 .title h1 {
   font-family: "Dancing Script", cursive;
-  font-size: 2.8rem;
-  color: white;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: 1.05;
+  text-shadow: 0 0 18px rgba(255, 79, 135, 0.28);
+  margin-bottom: 10px;
 }
 
 .title p {
-  color: #ffdbe6;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: #ffe4ec;
 }
 
-/* Área da carta */
 .scene {
   position: relative;
-  margin-top: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 130px;
+  padding-bottom: 120px;
 }
 
-/* Envelope */
 .envelope-wrap {
   position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
+  width: min(92vw, 760px);
+  height: 520px;
   margin: 0 auto;
 }
 
-/* Corpo do envelope */
-.body-envelope {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #ff6b9a, #d6336c);
-  clip-path: polygon(0 30%, 50% 60%, 100% 30%, 100% 100%, 0 100%);
-  border-radius: 0 0 20px 20px;
-  z-index: 2;
-}
-
-/* Lados */
-.left-fold {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  background: #e25582;
-  clip-path: polygon(0 0, 100% 50%, 0 100%);
-}
-
-.right-fold {
-  position: absolute;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: #e25582;
-  clip-path: polygon(100% 0, 0 50%, 100% 100%);
-}
-
-/* Tampa */
-.flap {
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  background: linear-gradient(135deg, #ff8fb3, #ff4d88);
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
-  transform-origin: top;
-  transition: 1s;
-  z-index: 4;
-}
-
-/* Selo */
-.seal {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
-  background: #ff4d88;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-  cursor: pointer;
-  z-index: 5;
-}
-
-/* Carta */
 .letter {
   position: absolute;
   left: 50%;
+  bottom: 110px;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 420px;
-  height: 380px;
-  background: #fffaf5;
-  border-radius: 15px;
-  padding: 20px;
-  bottom: 10px;
-  transition: 1s;
-  overflow-y: auto;
-  z-index: 1;
-}
-
-/* Texto */
-.letter h2 {
-  color: #d6336c;
-  font-family: "Dancing Script", cursive;
-}
-
-.subtitle {
-  color: #a05c6b;
-}
-
-.poem {
-  margin-top: 15px;
-  color: #5b3a42;
-  line-height: 1.7;
-  text-align: center;
-}
-
-/* Assinatura */
-.signature {
-  margin-top: 20px;
-  text-align: right;
-  color: #d6336c;
-  font-family: "Dancing Script", cursive;
-}
-
-/* Botão */
-.open-btn {
-  margin-top: 30px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d88;
-  color: white;
-  cursor: pointer;
-}
-
-/* Estado aberto */
-.scene.open .flap {
-  transform: rotateX(180deg);
-}
-
-.scene.open .letter {
-  bottom: 180px;
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .envelope-wrap {
-    height: 260px;
-  }
-
-  .letter {
-    height: 320px;
-    font-size: 0.9rem;
-  }
-
-  .title h1 {
-    font-size: 2rem;
-  }
-}
+  width: min(82vw, 560px);
+  height: 430px;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.25) 10%, transparent 10%),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 42px,
+      var(--paper-line) 43px
+    ),
+    linear-gradient(180deg, #fffdfa, #fff7ef);
+  border-radius: 24px;
+  box-shadow:
+    0 1
