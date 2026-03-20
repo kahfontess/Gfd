@@ -12,21 +12,22 @@
   <link rel="stylesheet" href="ll2.css">
 </head>
 <body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
   <div class="hearts" id="hearts"></div>
-  <div class="glow"></div>
 
-  <main class="container">
-    <header class="title">
+  <main class="page">
+    <header class="hero">
       <h1>Para minha princesa ❤️</h1>
       <p>Uma cartinha feita só para você.</p>
     </header>
 
     <section class="scene" id="scene">
-      <div class="floating-note">Você mudou minha vida!</div>
+      <div class="love-note" id="loveNote">Você mudou minha vida!</div>
 
       <div class="envelope-wrap">
-        <div class="letter" id="letter">
-          <div class="letter-content">
+        <article class="letter" id="letter">
+          <div class="letter-paper">
             <h2>Minha princesa</h2>
             <p class="subtitle">Com muito carinho!</p>
 
@@ -47,16 +48,16 @@
               <p>foi o melhor acaso que a vida fez. ❤️</p>
             </div>
 
-            <div class="signature">Com amor, momo Cadu 💌</div>
+            <p class="signature">Com amor, momo Cadu 💌</p>
           </div>
-        </div>
+        </article>
 
         <div class="envelope" aria-hidden="true">
-          <div class="envelope-back"></div>
-          <div class="body-envelope"></div>
-          <div class="left-fold"></div>
-          <div class="right-fold"></div>
-          <div class="flap"></div>
+          <div class="env-back"></div>
+          <div class="env-front"></div>
+          <div class="env-left"></div>
+          <div class="env-right"></div>
+          <div class="env-flap" id="envFlap"></div>
           <button class="seal" id="seal" type="button" aria-label="Abrir carta">💖</button>
         </div>
 
