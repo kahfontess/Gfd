@@ -15,7 +15,6 @@
 
   --white: #ffffff;
   --soft-white: #ffe6ef;
-  --shadow: rgba(0, 0, 0, 0.28);
 }
 
 * {
@@ -127,11 +126,11 @@ body {
 .letter {
   position: absolute;
   left: 50%;
-  bottom: 70px;
+  bottom: 40px;
   transform: translateX(-50%);
   width: min(82vw, 560px);
   height: 380px;
-  z-index: 1;
+  z-index: 2;
   transition:
     bottom 0.95s cubic-bezier(.22, .8, .24, 1),
     transform 0.95s cubic-bezier(.22, .8, .24, 1),
@@ -154,7 +153,6 @@ body {
   box-shadow:
     0 18px 40px rgba(0, 0, 0, 0.18),
     inset 0 0 0 1px rgba(188, 116, 141, 0.14);
-  border-radius: 24px;
   overflow-y: auto;
   padding: 34px 28px 28px;
   scrollbar-width: thin;
@@ -215,7 +213,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 310px;
+  height: 360px;
   z-index: 4;
 }
 
@@ -224,6 +222,7 @@ body {
   inset: 0;
   border-radius: 28px;
   background: linear-gradient(145deg, #ec85aa, #d95a84);
+  z-index: 1;
 }
 
 .env-front {
@@ -232,7 +231,7 @@ body {
   border-radius: 0 0 28px 28px;
   background: linear-gradient(145deg, var(--pink-2), var(--pink-4));
   clip-path: polygon(0 28%, 50% 62%, 100% 28%, 100% 100%, 0 100%);
-  z-index: 2;
+  z-index: 3;
 }
 
 .env-left,
@@ -268,7 +267,7 @@ body {
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top center;
   transition: transform 1s cubic-bezier(.22, .8, .24, 1);
-  z-index: 5;
+  z-index: 4;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
 }
 
@@ -288,7 +287,7 @@ body {
   place-items: center;
   cursor: pointer;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
-  z-index: 6;
+  z-index: 5;
   transition: transform 0.25s ease, opacity 0.35s ease, box-shadow 0.25s ease;
 }
 
@@ -348,7 +347,7 @@ body {
 }
 
 .scene.open .letter {
-  bottom: 205px;
+  bottom: 240px;
   transform: translateX(-50%);
   box-shadow: 0 28px 56px rgba(0, 0, 0, 0.24);
 }
@@ -435,13 +434,13 @@ body {
 
   .envelope-wrap {
     width: 94vw;
-    height: 470px;
+    height: 500px;
   }
 
   .letter {
     width: 84vw;
     height: 340px;
-    bottom: 64px;
+    bottom: 38px;
   }
 
   .letter-paper {
@@ -449,7 +448,7 @@ body {
   }
 
   .envelope {
-    height: 280px;
+    height: 320px;
   }
 
   .seal {
@@ -459,7 +458,7 @@ body {
   }
 
   .scene.open .letter {
-    bottom: 170px;
+    bottom: 200px;
   }
 }
 
@@ -479,13 +478,13 @@ body {
 
   .envelope-wrap {
     width: 94vw;
-    height: 410px;
+    height: 430px;
   }
 
   .letter {
     width: 84vw;
     height: 300px;
-    bottom: 56px;
+    bottom: 30px;
   }
 
   .letter-paper {
@@ -525,7 +524,7 @@ body {
   }
 
   .scene.open .letter {
-    bottom: 145px;
+    bottom: 150px;
   }
 
   .hint {
