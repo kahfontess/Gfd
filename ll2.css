@@ -539,3 +539,14 @@ body {
     padding: 15px 20px;
   }
 }
+
+
+/* Carta vai pra frente quando abre */
+.scene.open .letter {
+  z-index: 10;
+}
+
+/* Envelope vai pra trás quando abre */
+.scene.open .envelope {
+  z-index: 1;
+}
